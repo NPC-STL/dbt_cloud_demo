@@ -1,0 +1,17 @@
+
+version: 2
+
+models:
+  - name: stg_orders
+    description: Staging model for raw orders data.
+    columns:
+      - name: order_id
+        description: Primary key
+        tests:
+          - unique
+          - not_null
+      - name: status
+        description: Status of the order.
+        tests:
+          - accepted_values:
+              values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
